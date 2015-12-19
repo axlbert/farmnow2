@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cat Clicker app
+    </title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-20"></div>
+      <div class="col-60">
+
+          <h2>The Infamous Cat Clicker App!</h2>
+
+          <img class ="picturebox1" src="C:\Python27\OWN\nanodegree\projekte\projekte\Fend_P5\catpick.jpg" alt="picture of a cat">
+        <div class="counterbox">
+        </div>
+
+      </div>
+    <div class="col-20"></div>
+  </div>
+    <script>
+      var counter = 0;
+      var counterText = "<h2>This cat has been clicked %data% times !</h2>";
+      var formattedCount;
+
+    $(".picturebox1").click(function(e) {
+              counter++;
+              formattedCount = counterText.replace("%data%", counter);
+                    $(".counterbox").empty().append(formattedCount);
+    });
+
+
+    </script>
+
+  </body>
+</html>
+
+
+
+

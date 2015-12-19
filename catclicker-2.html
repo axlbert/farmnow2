@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cat Clicker app
+    </title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-100">
+          <h2>The Infamous Cat Clicker App!</h2>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-10"></div>
+      <div class="col-40">
+
+        <div class="picturebox1">
+
+        </div>
+
+      </div>
+      <div class="col-40">
+
+
+        <div class="picturebox2">
+        </div>
+
+      </div>
+
+
+      <div class="col-10"></div>
+    </div>
+      <div class="row">
+        <div class="col-10">
+        </div>
+        <div class="col-40">
+                  <div class="counterbox1">
+        </div>
+        </div>
+        <div class="col-40">
+                  <div class="counterbox2">
+        </div>
+        </div>
+          <div class="col-10">
+        </div>
+      </div>
+    </div>
+    <script>
+
+      var catAlog = {
+        "cat1": {
+          "name" : "Kitty",
+          "picture" : "catpick.jpg",
+          "clicks" : "1",
+        },
+        "cat2": {
+          "name" : "Patty",
+          "picture" : "catpick2.jpg",
+          "clicks" : "1",
+        },
+      };
+
+
+      var counter = 0;
+      var counter2 = 0;
+      var counterText = "<h2>%name% has been clicked %data% times !</h2>";
+      var formattedCount;
+      var picBox = '<img src="%url%" alt="picture of a cat">';
+      var formattedPic;
+
+      formattedPic = picBox.replace("%url%", catAlog.cat1.picture);
+      $(".picturebox1").append(formattedPic);
+
+      formattedPic = picBox.replace("%url%", catAlog.cat2.picture);
+      $(".picturebox2").append(formattedPic);
+
+    $(".picturebox1").click(function(e) {
+              counter++;
+              formattedCount = counterText.replace("%data%", counter).replace("%name%", catAlog.cat1.name);
+                   $(".counterbox1").empty().append(formattedCount);
+
+    });
+
+    $(".picturebox2").click(function(e) {
+              counter2++;
+              formattedCount = counterText.replace("%data%", counter2).replace("%name%", catAlog.cat2.name);
+                   $(".counterbox2").empty().append(formattedCount);
+
+    });
+
+
+    </script>
+
+  </body>
+</html>
+
+
+
+
