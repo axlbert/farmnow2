@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Cat Clicker app
+  </title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-100">
+        <h2>The Infamous Cat Clicker App!</h2>
+      </div>
+    </div>
+        <div class="row">
+          <div class="col-20">
+            <div class="ListContainer">
+              <h3>Available Cats</h3><br>
+            </div>
+          </div>
+
+          <div class="col-80">
+            <div class="CatContainer">
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <script>
+        var catAlog = {
+          "cat": [{
+            "name": "Kitty",
+            "picture": "catpick.jpg",
+            "clicks": "0",
+          }, {
+            "name": "Patty",
+            "picture": "catpick2.jpg",
+            "clicks": "0",
+          }, {
+            "name": "Nally",
+            "picture": "http://lorempixel.com/400/400/animals/5/",
+            "clicks": "0",
+          }, {
+            "name": "Polly",
+            "picture": "http://lorempixel.com/400/400/animals/4/",
+            "clicks": "0",
+          }, {
+            "name": "Natty",
+            "picture": "http://lorempixel.com/400/400/animals/3/",
+            "clicks": "0",
+          }],
+        };
+
+        var catBox = '<div id="picbox" class="picturebox%picno%"><div class="counterbox%countno%"></div></div>';
+        var formattedCatBox;
+        var ListBox = '<p class="listEntry%nameno%"><a href="#CatContainer">%name%</a></p><hr>';
+        var formattedListBox;
+        var counterText = "<h2>%name% has been clicked %data% times !</h2>";
+        var formattedCount;
+        var picBox = '<img src="%url%" alt="picture of a cat">';
+        var formattedPic;
+
+
+        CreateList = function() {
+          var len = catAlog.cat.length;
+          for (var i = 0; i < len; i++) {
+            formattedListBox = ListBox.replace("%nameno%", i).replace("%name%", catAlog.cat[i].name);
+            $(".ListContainer").append(formattedListBox);
+          }
+        };
+
+        CreateList();
+
+        singleDisplay = function(cats) {
+            formattedCatBox = catBox.replace("%picno%", cats).replace("%countno%", cats);
+            $(".CatContainer").append(formattedCatBox);
+            formattedPic = picBox.replace("%url%", catAlog.cat[cats].picture);
+            $(".picturebox" + [cats]).prepend(formattedPic);
+                        formattedCount = counterText.replace("%data%", catAlog.cat[cats].clicks).replace("%name%", catAlog.cat[cats].name);
+            $(".counterbox" + [cats]).empty().append(formattedCount);
+        };
+
+//Loops over the cats in the catAlog array
+        ClickTrigger = function() {
+          var len = catAlog.cat.length;
+          for (var cats = 0; cats < len; cats++) {
+            linkClick(cats);
+          }
+        };
+
+        catAlog.clickcount = function(cats) {
+          $(".picturebox" + [cats]).click(function() {
+            catAlog.cat[cats].clicks++;
+            formattedCount = counterText.replace("%data%", catAlog.cat[cats].clicks).replace("%name%", catAlog.cat[cats].name);
+            $(".counterbox" + [cats]).empty().append(formattedCount);
+          });
+        };
+
+        linkClick = function(cats) {
+          $(".listEntry"+[cats]).click(function(){
+            $(".CatContainer").empty();
+            singleDisplay(cats);
+            catAlog.clickcount(cats);
+
+
+          });
+        };
+
+
+        ClickTrigger();
+      </script>
+
+</body>
+
+</html>
