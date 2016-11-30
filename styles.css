@@ -1,123 +1,66 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
+.navbar-default{
+    background:transparent;
+    border:none !important;
+
+}
+.navbar-nav>li>a:hover{
+    color:#1a1a1a;
+}
+.collapse.in{
+
+    background-color:#f0f0f0 !important;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus
+.spacer{
+   background-color:#888;
+}
+
+.spacer{
+    height:100px;
+}
+
+#two {
+	 background: url("harvester.jpg") 0 no-repeat;
+	 -o-background-size:100%;
+-webkit-background-size:100%;
+-moz-background-size:100%;
+background-size:cover;
+
+height: 400px;
+
+}
+
+#sogehts {
+
+}
+
+#buchen {
+     background: url("ordernow.jpg") 0 no-repeat;
+     -o-background-size:100%;
+-webkit-background-size:100%;
+-moz-background-size:100%;
+background-size:cover;
+
+height: 400px;
+
+}
+
+.navtext {
+    color: white;
 }
 
 
-@media screen and (max-width: 420px) {
-  .ListContainer {
-    display: none;
-  }
-  .col-20 {
-   display: none;
-  }
+#transparent {
+ background: rgba(255,255,255,0.3);
 }
 
-* {
-  font-family: "Roboto", sans-serif;
-}
+.logobanner {
 
-
-/* {
-  border: 1px solid red;
-}*/
-
-
-.container {
-  max-width: 100%;
-  margin: auto;
+	width: 500px;
+	margin-bottom: -10%;
 
 }
 
-.row {
-  display: flex;
-  display: -webkit-flex;
-}
+@media (max-width: 767px) {
 
-.col-10 {
-  width: 10%;
-  text-align: center;
-}
-
-.col-20 {
-  width: 20%;
-  text-align: center;
-}
-
-.col-30 {
-  width: 30%;
-  text-align: center;
-  margin-top: 3%;
-}
-
-.col-40 {
-  width: 40%;
-  text-align: center;
-  margin-top: 3%;
-}
-
-.col-60 {
-  width: 60%;
-  text-align: center;
-}
-
-.col-80 {
-  max-width: 80%;
-  text-align: center;
-  margin:auto;
-}
-.col-100 {
-  width: 100%;
-  text-align: center;
-  background-color: #C0C0C0;
-  padding: 10px 0;
-}
-
-h2 {
-  max-width: 100%;
-  display: inline;
-  margin: 20px;
-}
-
-h3 {
-  padding-top: 10px;
-}
-
-
-.CatContainer {
-  width: 100%;
-  display: flex;
-  display: -webkit-flex;
-}
-
-#picbox {
-  margin:auto;
-}
-
-
-.ListContainer {
-background-color: #E0E0E0;
-border-radius: 1em;
-}
-
-img {
-  max-width: 100%;
-  max-height: 300px;
-}
-
-hr {
-  margin: 0 20px;
-}
-
-p {
-  display: block;
-  padding: 10px 0;
-  margin: 0 20px;
-}
-
-p:hover {
-  background-color: #C0C0C0;
-
-}
+#one { display: none; }
