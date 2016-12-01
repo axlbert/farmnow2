@@ -87,18 +87,38 @@ var iniLocations = [{
 var ViewModel = function() {
     /**launching the google map*/
     var self = this;
+    self.showStartpage = ko.observable();
     self.input = ko.observable('');    
-    self.filterList = ko.observableArray([]);
+    self.currentCategory = ko.observable();
+    self.showCategoryPage = ko.observable();
+    self.showStartpage2 = ko.observable(false);
+    self.filterList = ko.observableArray([]);  
+    self.categoryList = ko.observableArray(["Valves","SPS","Motors","Pumps","Subcontracted","Field Assembly","Sensors","Pneumatics","eCabinets"]);
+
+
+    self.init_page = function(){
+      self.showStartpage(true);
+      self.showCategoryPage(false);
+    };
+
+    self.init_page();
 
     /** populating a copy of the locationlist with the dataset for better filtering*/
     self.buildFilterList = function(val) {
       iniLocations.forEach(function(val) {
         self.filterList.push(val);
+        
       });
     };
 
     /** triggering the above mentioned*/
     self.buildFilterList();
+
+    self.showCategory = function($data){
+      self.showStartpage(false);
+      self.currentCategory($data);
+      self.showCategoryPage(true);
+    };
 
 
     self.filterFunc = function() {
