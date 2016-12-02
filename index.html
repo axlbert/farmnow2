@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,33 +52,18 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-2 col-md-1 sidebar">
-        <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Reports</a></li>
-          <li><a href="#">Analytics</a></li>
-          <li><a href="#">Export</a></li>
-        </ul>
-        <ul class="nav nav-sidebar" data-bind="template: {name:'list', foreach: categoryList  }"></ul>
-        <!--adding a $parent keeps the code from breaking-->
-        <script type="text/html" id="list">
-          <li class="list-group-item" data-bind="text: $data , click: $parent.showCategory"></li>
-        </script>
+            
+      <div class="col-sm-12 col-md-12">
+        <h3 class="page-header" data-bind="visible: showCategoryPage, text: currentCategory"></h3>
 
 
-
-      </div>
-      <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
-        <h3 class="page-header" data-bind="text: currentCategory"></h3>
-
-
-        <h2 class="sub-header" data-bind="text: input"></h2>
 
         <div class="row placeholders" >
+        <div class="container-fluid">
           <div class="row" data-bind="visible: showStartpage2()">
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail" id="recommendation">
-                <img src="valve.jpg" alt="...">
+                <img src="valve.png" alt="...">
                 <div class="caption">
                   <h3>Best Price</h3>
                   <p>Solenoid Budget</p>
@@ -87,7 +73,7 @@
             </div>
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
-                <img src="valve.jpg" alt="...">
+                <img src="valve.png" alt="...">
                 <div class="caption">
                   <h3>Your Choice</h3>
                   <p>Solenoid - 2</p>
@@ -98,7 +84,7 @@
 
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
-                <img src="valve.jpg" alt="...">
+                <img src="valve.png" alt="...">
                 <div class="caption">
                   <h3>High Runner</h3>
                   <p>Solenoid Mega</p>
@@ -106,7 +92,7 @@
                 </div>
               </div>
             </div>
-
+          </div>
 
 
 
@@ -157,65 +143,64 @@
 
 
           <div class="container-fluid" data-bind="visible: showStartpage">
+
           <br>
           <br>
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="jumbotron">
+                <h2>Get a quote</h2>
+                <p>Now available for Field Assemblies</p>
+                <p><a class="btn btn-primary btn-lg" href="sizing.html" role="button">Calculate Now</a></p>
+              </div>
+            </div>
+              
+            <div class="col-sm-6 col-md-4">
+              <div class="jumbotron">
+                <h2>Open Innovation</h2>
+                <p>Find savings Ideas previously applied in your subject area.</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+              </div>
+            </div>
+          
+          <div class="col-sm-6 col-md-4">
           <div class="jumbotron">
-          <h2>Portal v0.1 now online</h2>
-          <p>Bacon ipsum dolor amet cupim doner tri-tip pork loin porchetta kielbasa burgdoggen shank pork chop sirloin beef ham t-bone turkey. Ham hock bacon capicola meatloaf shankle fatback <strong>beef ribs.</strong> Ground round corned beef filet mignon, andouille brisket chicken salami. Tail biltong cupim ham hamburger sirloin prosciutto flank.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+
+        <ul class="nav nav-sidebar" data-bind="template: {name:'list', foreach: categoryList  }"></ul>
+        <!--adding a $parent keeps the code from breaking-->
+        <script type="text/html" id="list">
+          <li class="list-group-item" data-bind="text: $data , click: $parent.showCategory"></li>
+        </script>
           </div>
           </div>
+          </div>
+          </div>
+
 
         </div>
 
-	<div class="table-responsive" data-bind="visible: showCategoryPage">
-		<div class="container-fluid">
-		<ul class="nav nav-sidebar" data-bind="template: {name:'list2', foreach: filterList  }"></ul>
+  <div class="table-responsive" data-bind="visible: showCategoryPage">
+    <div class="container-fluid">
+    <table class="table"><tbody class= "table table-striped" data-bind="template: {name:'list2', foreach: filterList  }"></tbody></table>
         
-        	<script type="text/html" id="list2">
-          	<li class="list-group-item" data-bind="text: name, click: $parent.showBestPrice"></li>
-        	</script>
-		</div>
+          <script type="text/html" id="list2">
+            
+              <tr>
+                <td><img src="valve2.png"></td>
+                <td data-bind="text: name, click: $parent.showBestPrice"></td>
+                <td>24€</td>
+                <td>spec</td>
+                <td>spec</td>
+                <td>FDA</td>
+              </tr>
+              <hr>
+           </script>
+    </div>
 
 
-	</div>
+  </div>
 
-        <div class="table-responsive" data-bind="visible: showCategoryPage">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-              </tr>
-              <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        
       </div>
     </div>
   </div>

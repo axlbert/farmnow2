@@ -18,6 +18,11 @@ body {
 }
 
 
+.carousel-caption {
+  font-size: 20px;
+  color: #fff;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
@@ -27,11 +32,11 @@ body {
 }
 
 #recommendation {
-  background-color: #f9e58d;
+  background-color: #fff;
 }
 
 .navbar-inverse {
-  background-color: #black;
+  background-color: #414141;
 }
 
 

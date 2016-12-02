@@ -1,4 +1,3 @@
-
 var iniLocations = [{
   clickCount: 0,
   name: "Solenoid",
@@ -139,12 +138,21 @@ var ViewModel = function() {
 
             //console.log("if clause of filter function is hit");
             self.filterList.push(val);
+
+            self.showStartpage(false);
+            self.showCategoryPage(true);
+     
             /** using map center here causes some erratic behaviour*/
             //map.setCenter(val.coords);
           }
         });
       } else {
        this.buildFilterList();
+
+       self.showStartpage(true);
+       self.showCategoryPage(false);
+
+       self.showStartpage2(false);
       }
 
     };
