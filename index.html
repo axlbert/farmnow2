@@ -167,13 +167,15 @@
           </div>
 
         </div>
-
+	
 	<div class="table-responsive" data-bind="visible: showCategoryPage">
+		<div class="container-fluid">
 		<ul class="nav nav-sidebar" data-bind="template: {name:'list2', foreach: filterList  }"></ul>
         
         	<script type="text/html" id="list2">
           	<li class="list-group-item" data-bind="text: name"></li>
         	</script>
+		</div>
 
 
 	</div>
