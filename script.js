@@ -91,7 +91,7 @@ var ViewModel = function() {
     self.input = ko.observable('');    
     self.currentCategory = ko.observable();
     self.showCategoryPage = ko.observable();
-    self.showStartpage2 = ko.observable(false);
+    self.showStartpage2 = ko.observable();
     self.filterList = ko.observableArray([]);  
     self.categoryList = ko.observableArray(["Valves","SPS","Motors","Pumps","Subcontracted","Field Assembly","Sensors","Pneumatics","eCabinets"]);
 
@@ -99,6 +99,7 @@ var ViewModel = function() {
     self.init_page = function(){
       self.showStartpage(true);
       self.showCategoryPage(false);
+      self.showStartpage2(false);
     };
 
     self.init_page();
@@ -118,6 +119,11 @@ var ViewModel = function() {
       self.showStartpage(false);
       self.currentCategory($data);
       self.showCategoryPage(true);
+      self.showStartpage2(false);
+    };
+  
+    self.showBestPrice = function(){
+      self.showStartpage2(true);
     };
 
 
