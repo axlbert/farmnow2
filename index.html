@@ -168,6 +168,16 @@
 
         </div>
 
+	<div class="table-responsive" data-bind="visible: showCategoryPage">
+		<ul class="nav nav-sidebar" data-bind="template: {name:'list2', foreach: filterList  }"></ul>
+        
+        	<script type="text/html" id="list2">
+          	<li class="list-group-item" data-bind="text: $data"></li>
+        	</script>
+
+
+	</div>
+
         <div class="table-responsive" data-bind="visible: showCategoryPage">
           <table class="table table-striped">
             <thead>
