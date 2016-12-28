@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Range with fixed minimum</title>
+  <link rel="stylesheet" href="jqueryui/style.css">
+  <link rel="stylesheet" href="jqueryui/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+ 
+<p>
+  <label for="amount">Fläche in ha:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#b30202; font-weight:bold;">
+</p>
+ 
+<div id="slider-range-min"></div>
+
+<div id="box-sizing">
+<canvas id="myCanvas" width="500" height="500"></canvas>
+</div>
+<br>
+<br>
+
+<p>
+  <label for="amount2">Row width in cm:</label>
+  <input type="text" id="amount2" readonly style="border:0; color:#b30202; font-weight:bold;">
+</p>
+ 
+<div id="slider-range-min2"></div>
+
+<div id="box-sizing2">
+<canvas id="myCanvas2" width="500" height="500"></canvas>
+</div>
+
+
+
+<script>
+var size_field = 50;
+var max_field = 200;
+
+  $( function() {
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: size_field,
+      min: 1,
+      max: max_field,
+      slide: function( event, ui ) {
+        $( "#amount" ).val(+ ui.value );
+		size_field = ui.value;
+      }
+    });
+	
+    $( "#amount" ).val( $( "#slider-range-min" ).slider( "value" ) );
+	
+	
+	setInterval(repaintCanvas, 50);
+  } );
+  
+  
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+function repaintCanvas() {
+		var canvas_dim = 500;
+		/* variable below is softening the scaling of the box and keeping it at min 100px */
+		var current_field = ((size_field/max_field) * 400) + 100;
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		var grd = ctx.createLinearGradient(0,0,1.1*current_field,0);
+		grd.addColorStop(0,"red");
+		grd.addColorStop(1,"white");
+		ctx.fillStyle = grd;
+
+
+		ctx.fillRect(20,20,current_field,current_field);
+		unit_field = " ha";
+		
+		total_field = Math.floor(Math.sqrt(size_field)* Math.sqrt(size_field));
+		total_field = total_field.toString();
+		show_field = total_field.concat(unit_field);
+		ctx.stroke();
+		ctx.font = "30px Arial";
+		ctx.fillStyle = 'white';
+		ctx.fillText(show_field,(size_field/2+20),(size_field/2)+50);
+};
+
+
+var size_field2 = 75;
+var max_field2 = 100;
+
+  $( function() {
+    $( "#slider-range-min2" ).slider({
+      range: "min",
+      value: size_field2,
+      min: 35,
+      max: max_field2,
+      slide: function( event, ui ) {
+        $( "#amount2" ).val(+ ui.value );
+		size_field2 = ui.value;
+      }
+    });
+	
+    $( "#amount2" ).val( $( "#slider-range-min2" ).slider( "value" ) );
+	
+	
+	setInterval(repaintCanvas2, 50);
+  } );
+  
+  
+var c2=document.getElementById("myCanvas2");
+var ctx2=c2.getContext("2d");
+function repaintCanvas2() {
+		var objimage1 = new Image();
+		objimage1.src = "hill.png";
+		var objimage2 = new Image();
+		objimage2.src = "hill.png";
+		var canvas_dim2 = 500;
+		/* variable below is softening the scaling of the box and keeping it at min 100px */
+		
+		ctx2.clearRect(0, 0, ctx2.canvas.width, ctx2.canvas.height);
+		basic_offset = 100;
+		basic_o_2nd_img = 200;
+		ctx2.drawImage(objimage1,basic_offset,100)
+		ctx2.drawImage(objimage2,basic_o_2nd_img + size_field2,100)
+		unit_field2 = " cm";		
+		total_width = size_field2.toString();
+		show_field2 = total_width.concat(unit_field2);
+        ctx2.beginPath();
+        ctx2.moveTo(100, 135);
+        ctx2.lineTo(250+size_field2, 135);
+        ctx2.stroke();
+		
+		
+		ctx2.font = "20px Arial";
+		ctx2.fillStyle = 'black';
+		ctx2.fillText(show_field2,(160 + size_field2/2),100);
+};
+
+</script>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+ 
+ 
+</body>
+</html>
